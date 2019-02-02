@@ -59,7 +59,7 @@ def parse_session_id(msg):
     '''
     Extract the session id from the message
     '''
-    data = json.loads(msg.payload)
+	data = json.loads(msg.payload)
 	return data['sessionId']
 
 def parse_slots(msg):
