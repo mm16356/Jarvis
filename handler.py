@@ -23,7 +23,7 @@ def on_connect(client, userdata, flags, rc):
         mqtt_client.subscribe(topic)
 
 
-def on_connect(client, userdata, msg):
+def on_message(client, userdata, msg):
     print(msg.topic)
     
     if msg.topic not in CALCULATOR_TOPICS:
