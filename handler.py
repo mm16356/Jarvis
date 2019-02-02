@@ -27,7 +27,7 @@ def on_connect(client, userdata, msg):
 	
 	if msg.topic not in CALCULATOR_TOPICS:
 		return
-	
+		
 	slots = parse_slots(msg)
 	sum = addTwo(slots)
 	
