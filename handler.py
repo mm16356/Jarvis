@@ -32,6 +32,8 @@ def on_message(client, userdata, msg):
     slots = parse_slots(msg)
     sum = addTwo(slots)
     
+    say(session_id, "Hello")
+    
     if msg.topic == 'hermes/intent/ComputeSum':
         response = ("The sum is {0}.".format(sum["sum"]))
         
