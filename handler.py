@@ -20,8 +20,9 @@ CALCULATOR_TOPICS = ['hermes/intent/ComputeSum']
 # Subscribe to msg stream
 def on_connect(client, userdata, flags, rc):
     for topic in WEATHER_TOPICS:
-    mqtt_client.subscribe(topic)
-    
+        mqtt_client.subscribe(topic)
+
+
 def on_connect(client, userdata, msg):
     print(msg.topic)
     
@@ -36,7 +37,8 @@ def on_connect(client, userdata, msg):
         
     session_id = parse_session_id(msg)
     say(session_id, response)
-    
+
+
 def addTwo(slots):
     '''
     parse numeber slots and add
@@ -45,8 +47,8 @@ def addTwo(slots):
     number2 = slots.get("SecondTerm", None)
     sum = number1 + number2
     return {"sum": sum}
-    
-    
+
+
 def say(session_id, text):
     '''
     Prints the output text (if debig) to the console and TTS engine
@@ -54,7 +56,8 @@ def say(session_id, text):
     if PRINT_DEBUG_TO_TERMINAL:
         print(text)
     mqtt_client.publish('hermes/dialogueManager/endSession', json.dumps({'text': text, "sessionId" : session_id}))
-    
+
+
 def parse_session_id(msg): 
     '''
     Extract the session id from the message
