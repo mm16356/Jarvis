@@ -51,7 +51,7 @@ def say(session_id, text):
 	'''
 	Prints the output text (if debig) to the console and TTS engine
 	'''
-	if PRINT_DEBUG_TO_TERMINAL
+	if PRINT_DEBUG_TO_TERMINAL:
 		print(text)
 	mqtt_client.publish('hermes/dialogueManager/endSession', json.dumps({'text': text, "sessionId" : session_id}))
 	
