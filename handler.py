@@ -19,7 +19,7 @@ CALCULATOR_TOPICS = ['hermes/intent/ComputeSum']
 
 # Subscribe to msg stream
 def on_connect(client, userdata, flags, rc):
-    for topic in WEATHER_TOPICS:
+    for topic in CALCULATOR_TOPICS:
         mqtt_client.subscribe(topic)
 
 
@@ -30,10 +30,9 @@ def on_message(client, userdata, msg):
         return
         
     slots = parse_slots(msg)
-    print slots
     sum = addTwo(slots)
     
-    say(session_id, "Hello")
+    #say(session_id, "Hello")
     
     if msg.topic == 'hermes/intent/ComputeSum':
         response = ("The sum is {0}.".format(sum["sum"]))
