@@ -30,6 +30,7 @@ def on_message(client, userdata, msg):
         return
         
     slots = parse_slots(msg)
+	print slots
     sum = addTwo(slots)
     
     say(session_id, "Hello")
