@@ -22,7 +22,7 @@ def on_connect(client, userdata, flags, rc):
     for topic in WEATHER_TOPICS:
 	mqtt_client.subscribe(topic)
 	
-def on_connect(client, userdata, msg)
+def on_connect(client, userdata, msg):
 	print(msg.topic)
 	
 	if msg.topic not in CALCULATOR_TOPICS:
@@ -37,7 +37,7 @@ def on_connect(client, userdata, msg)
 	session_id = parse_session_id(msg)
 	say(session_id, response)
 	
-def addTwo(slots)
+def addTwo(slots):
 	'''
 	parse numeber slots and add
 	'''
