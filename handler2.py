@@ -30,10 +30,10 @@ mqtt_client = mqtt.Client()
 HOST = "localhost"
 PORT = 1883
 
-_INTENT_SEARCH_DATASHEET = 'hermes/intent/mm16356:demoSearchDatasheet'
-_USER_RANDOM_ANSWER = 'hermes/intent/mm16356:userRandomAnswer'
+INTENT_SEARCH_DATASHEET = 'hermes/intent/mm16356:demoSearchDatasheet'
+USER_RANDOM_ANSWER = 'hermes/intent/mm16356:userRandomAnswer'
 
-CALCULATOR_TOPICS = [_INTENT_SEARCH_DATASHEET,_USER_RANDOM_ANSWER]
+CALCULATOR_TOPICS = [INTENT_SEARCH_DATASHEET,USER_RANDOM_ANSWER]
 
 # Subscribe to msg stream
 def onConnect(client, userdata, flags, rc):
@@ -47,9 +47,9 @@ def onMessage(client, userdata, msg):
     print("got to on message")
     data = json.loads(message.payload)
     sessionId = data['sessionId']
-    if message.topic == _INTENT_SEARCH_DATASHEET:
+    if message.topic == INTENT_SEARCH_DATASHEET:
         ask(text='For which component?', customData=json.dumps({
-        'wasIntent': _INTENT_SEARCH_DATASHEET
+        'wasIntent': INTENT_SEARCH_DATASHEET
         }))
     elif message.topic == 'userRandomAnswer'
         customData = parseCustomData(message)
@@ -63,16 +63,19 @@ def onMessage(client, userdata, msg):
     
 
 def onSessionStarted(client, data, msg):
+    print("got to onSessionStarted")
     sessionId = parseSessionId(msg)
     sessions[sessionId] = msg
 
 
 def onSessionEnded(client, data, msg):
+    print("got to onSessionEnded")
     sessionId = parseSessionId(msg)
     if sessionId in sessions:
         del sessions[sessionId]
 
 def onIntentNotRecognized(client, data, msg):
+    print("got to onIntentNotRecognized")
     payload = json.loads(msg.payload)
     sessionId = parseSessionId(msg)
 
