@@ -35,7 +35,7 @@ USER_RANDOM_ANSWER = 'hermes/intent/mm16356:userRandomAnswer'
 
 CALCULATOR_TOPICS = [INTENT_SEARCH_DATASHEET,USER_RANDOM_ANSWER]
 
-# Subscribe to msg stream
+# Subscribe to message stream
 def onConnect(client, userdata, flags, rc):
     for topic in CALCULATOR_TOPICS:
         mqtt_client.subscribe(topic)
@@ -43,7 +43,7 @@ def onConnect(client, userdata, flags, rc):
     print("got to on connect")
 
 
-def onMessage(client, userdata, msg):
+def onMessage(client, userdata, message):
     print("got to on message")
     data = json.loads(message.payload)
     sessionId = data['sessionId']
@@ -59,26 +59,26 @@ def onMessage(client, userdata, msg):
         for j in search(query, tld="co.uk", num=1, stop=1, pause=2): 
             print(j) 
             wb.open_new_tab(j)
-#    session_id = parse_session_id(msg)
+#    session_id = parse_session_id(message)
 #    say(response)
     
 
-def onSessionStarted(client, data, msg):
+def onSessionStarted(client, data, message):
     print("got to onSessionStarted")
-    sessionId = parseSessionId(msg)
-    sessions[sessionId] = msg
+    sessionId = parseSessionId(message)
+    sessions[sessionId] = message
 
 
-def onSessionEnded(client, data, msg):
+def onSessionEnded(client, data, message):
     print("got to onSessionEnded")
-    sessionId = parseSessionId(msg)
+    sessionId = parseSessionId(message)
     if sessionId in sessions:
         del sessions[sessionId]
 
-def onIntentNotRecognized(client, data, msg):
+def onIntentNotRecognized(client, data, message):
     print("got to onIntentNotRecognized")
-    payload = json.loads(msg.payload)
-    sessionId = parseSessionId(msg)
+    payload = json.loads(message.payload)
+    sessionId = parseSessionId(message)
 
     wasMessage = sessions[sessionId]
     customData = parseCustomData(wasMessage)
