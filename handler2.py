@@ -15,7 +15,7 @@ from time import sleep
 import webbrowser as wb
 
 try: 
-    from googlesearch import search 
+    from googlesearch import search as schh
 except ImportError: 
     print("No module named 'google' found") 
 
@@ -59,7 +59,7 @@ def onMessage(client, userdata, message):
         #query = "filetype:pdf datasheet " + customData['userInput']
         query = "datasheet bc546"
         say("opening datasheet for b c 5 4 6")
-        for j in search(query, tld="co.uk", num=1, stop=1, pause=2): 
+        for j in schh(query, tld="co.uk", num=1, stop=1, pause=1): 
             print(j) 
             wb.open_new_tab(j)
         print("opening datasheet for bc546") 
