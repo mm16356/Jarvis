@@ -51,7 +51,7 @@ def onMessage(client, userdata, msg):
         led.on()
         response = ("Machine is on")
     if msg.topic == 'hermes/intent/mm16356:TurnOff':
-        led.on()
+        led.off()
         response = ("Machine is off")
     session_id = parse_session_id(msg)
     say(response)
