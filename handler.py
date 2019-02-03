@@ -23,9 +23,7 @@ mqtt_client = mqtt.Client()
 HOST = "localhost"
 PORT = 1883
 
-CALCULATOR_TOPICS = ['hermes/intent/mm16356:ComputeSum',
-'hermes/intent/mm16356:TurnOn',
-'hermes/intent/mm16356:TurnOff']
+CALCULATOR_TOPICS = ['hermes/intent/mm16356:ComputeSum','hermes/intent/mm16356:TurnOn','hermes/intent/mm16356:TurnOff']
 
 # Subscribe to msg stream
 def onConnect(client, userdata, flags, rc):
@@ -53,7 +51,7 @@ def onMessage(client, userdata, msg):
         led.on()
         response = ("Machine is on")
     if msg.topic == 'hermes/intent/mm16356:TurnOff':
-        led.off()
+        led.on()
         response = ("Machine is off")
     session_id = parse_session_id(msg)
     say(response)
