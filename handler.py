@@ -79,5 +79,5 @@ if __name__ == '__main__':
     mqtt_client.on_connect = on_connect
     mqtt_client.on_message = on_message
     mqtt_client.connect(HOST, PORT)
-	print("Demo loaded")
+    print("Demo loaded")
     mqtt_client.loop_forever()
