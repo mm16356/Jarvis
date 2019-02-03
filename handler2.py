@@ -155,6 +155,6 @@ if __name__ == '__main__':
     mqtt_client.message_callback_add('hermes/dialogueManager/sessionStarted', onSessionStarted)
     mqtt_client.connect(HOST, PORT)
     print("Demo loaded")
-    say("This is Jarvis. What do you want?")
+    say("System OK")
     print("Sound played")
     mqtt_client.loop_forever()

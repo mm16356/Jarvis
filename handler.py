@@ -100,5 +100,5 @@ if __name__ == '__main__':
     mqtt_client.on_message = onMessage
     mqtt_client.connect(HOST, PORT)
     mqtt_client.connect(HOST, PORT)
-    print("SearchDatasheet loaded!")
+    print("S")
     mqtt_client.loop_forever()
