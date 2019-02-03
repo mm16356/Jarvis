@@ -78,7 +78,7 @@ def parse_slots(msg):
     We extract the slots as a dict
     '''
     data = json.loads(msg.payload)
-    return {slot['slotName']: slot['value'] for slot in data['slots']}    
+    return {slot['slotName']: slot['rawValue'] for slot in data['slots']}    
     
     
 def say(text):
