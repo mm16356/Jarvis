@@ -18,7 +18,7 @@ mqtt_client = mqtt.Client()
 HOST = "localhost"
 PORT = 1883
 
-CALCULATOR_TOPICS = ['hermes/intent/ComputeSum']
+CALCULATOR_TOPICS = ['hermes/intent/mm16356:ComputeSum']
 
 # Subscribe to msg stream
 def onConnect(client, userdata, flags, rc):
@@ -40,7 +40,7 @@ def onMessage(client, userdata, msg):
     
     #say(session_id, "Hello")
     
-    if msg.topic == 'hermes/intent/ComputeSum':
+    if msg.topic == 'hermes/intent/mm16356:ComputeSum':
         response = ("The sum is {0}.".format(sum["sum"]))
         
     session_id = parse_session_id(msg)
