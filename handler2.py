@@ -57,15 +57,6 @@ def onMessage(client, userdata, msg):
     say(response)
 
 
-def addTwo(slots):
-    '''
-    parse numeber slots and add
-    '''
-    number1 = slots.get("FirstTerm", None)
-    number2 = slots.get("SecondTerm", None)
-    sum = int(number1 + number2)
-    return {"sum": sum}
-
 
 def say(session_id, text):
     '''
