@@ -31,7 +31,8 @@ HOST = "localhost"
 PORT = 1883
 
 INTENT_SEARCH_DATASHEET = 'hermes/intent/mm16356:demoSearchDatasheet'
-USER_RANDOM_ANSWER = 'hermes/intent/mm16356:userRandomAnswer'
+USER_RANDOM_ANSWER = 'hermes/intent/mm16356:component'
+INTENT_COMPONENT = 'hermes/intent/mm16356:userRandomAnswer'
 
 CALCULATOR_TOPICS = [INTENT_SEARCH_DATASHEET,USER_RANDOM_ANSWER]
 
@@ -52,10 +53,12 @@ def onMessage(client, userdata, message):
         ask(text='For which component?', customData=json.dumps({
         'wasIntent': INTENT_SEARCH_DATASHEET
         }))
-    elif message.topic == 'userRandomAnswer':
-        customData = parseCustomData(message)
-        print(customData['userInput'])
-        query = "filetype:pdf datasheet " + customData['userInput']
+    elif message.topic == INTENT_COMPONENT:
+        #customData = parseCustomData(message)
+       # print(customData['userInput'])
+        #query = "filetype:pdf datasheet " + customData['userInput']
+        query = "filetype:pdf datasheet " + "bc546"
+        say("opening datasheet for bc546")
         for j in search(query, tld="co.uk", num=1, stop=1, pause=2): 
             print(j) 
             wb.open_new_tab(j)
