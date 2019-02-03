@@ -31,10 +31,10 @@ HOST = "localhost"
 PORT = 1883
 
 INTENT_SEARCH_DATASHEET = 'hermes/intent/mm16356:demoSearchDatasheet'
-USER_RANDOM_ANSWER = 'hermes/intent/mm16356:component'
-INTENT_COMPONENT = 'hermes/intent/mm16356:userRandomAnswer'
+INTENT_COMPONENT = 'hermes/intent/mm16356:component'
+USER_RANDOM_ANSWER = 'hermes/intent/mm16356:userRandomAnswer'
 
-CALCULATOR_TOPICS = [INTENT_SEARCH_DATASHEET,USER_RANDOM_ANSWER]
+CALCULATOR_TOPICS = [INTENT_SEARCH_DATASHEET,USER_RANDOM_ANSWER,INTENT_COMPONENT]
 
 # Subscribe to message stream
 def onConnect(client, userdata, flags, rc):
