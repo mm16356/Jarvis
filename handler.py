@@ -85,11 +85,7 @@ if __name__ == '__main__':
     mqtt_client.on_message = on_message
     mqtt_client.connect(HOST, PORT)
     print("Demo loaded")
-		mqttClient.publish('hermes/dialogueManager/startSession', json.dumps({
-		'init': {
-			'type': 'notification',
-			'text': "this is a test"
-		}
-}))
-	mqtt_client.connect(HOST, PORT)
+    mqttClient.publish('hermes/dialogueManager/startSession', json.dumps({'init': {'type': 'notification','text': "this is a test"}}))
+    print("Sound played")
+    mqtt_client.connect(HOST, PORT)
     mqtt_client.loop_forever()
