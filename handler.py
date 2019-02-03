@@ -23,9 +23,11 @@ CALCULATOR_TOPICS = ['hermes/intent/ComputeSum']
 def on_connect(client, userdata, flags, rc):
     for topic in CALCULATOR_TOPICS:
         mqtt_client.subscribe(topic)
+    print("got to on connect")
 
 
 def on_message(client, userdata, msg):
+    print("got to on connect")
     print(msg.topic)
     
     if msg.topic not in CALCULATOR_TOPICS:
