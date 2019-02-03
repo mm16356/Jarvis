@@ -143,7 +143,7 @@ def say(text):
 
 def ask(text, client='default', intentFilter=None, customData=''):
     pin1.on()
-    pin2.off()
+    pin2.on()
     pin3.off()
     mqtt_client.publish('hermes/dialogueManager/startSession', json.dumps({
         'siteId': client,
@@ -154,6 +154,9 @@ def ask(text, client='default', intentFilter=None, customData=''):
             'canBeEnqueued': True
         }
     }))
+    pin1.on()
+    pin2.on()
+    pin3.on()
 
 
 
