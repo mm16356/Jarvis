@@ -48,6 +48,7 @@ def onMessage(client, userdata, msg):
     data = json.loads(message.payload)
     sessionId = data['sessionId']
     if message.topic == INTENT_SEARCH_DATASHEET:
+        print("got to on message.topic datahseet")
         ask(text='For which component?', customData=json.dumps({
         'wasIntent': INTENT_SEARCH_DATASHEET
         }))
