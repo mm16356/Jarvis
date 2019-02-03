@@ -51,7 +51,7 @@ def onMessage(client, userdata, msg):
         ask(text='For which component?', customData=json.dumps({
         'wasIntent': INTENT_SEARCH_DATASHEET
         }))
-    elif message.topic == 'userRandomAnswer'
+    elif message.topic == 'userRandomAnswer':
         customData = parseCustomData(message)
         print(customData['userInput'])
         query = "filetype:pdf datasheet " + customData['userInput']
