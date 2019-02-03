@@ -41,7 +41,7 @@ def onMessage(client, userdata, msg):
     #say(session_id, "Hello")
     
     if msg.topic == 'hermes/intent/mm16356:ComputeSum':
-        response = ("The sum of the two numbers is {0}. Youre welcome. Jarvis out.".format(sum["sum"]))
+        response = ("The sum is {0}.".format(sum["sum"]))
         
     session_id = parse_session_id(msg)
     say(response)
