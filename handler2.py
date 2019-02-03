@@ -98,14 +98,14 @@ def onIntentNotRecognized(client, data, msg):
     onMessage(None, None, wasMessage)
 
 def endTalk(sessionId, text):
-    mqttClient.publish('hermes/dialogueManager/endSession', json.dumps({
+    mqtt_client.publish('hermes/dialogueManager/endSession', json.dumps({
         'sessionId': sessionId,
         'text': text
     }))
 
 
 def say(text):
-    mqttClient.publish('hermes/dialogueManager/startSession', json.dumps({
+    mqtt_client.publish('hermes/dialogueManager/startSession', json.dumps({
         'init': {
             'type': 'notification',
             'text': text
@@ -114,7 +114,7 @@ def say(text):
 
 
 def ask(text, client='default', intentFilter=None, customData=''):
-    mqttClient.publish('hermes/dialogueManager/startSession', json.dumps({
+    mqtt_client.publish('hermes/dialogueManager/startSession', json.dumps({
         'siteId': client,
         'customData': customData,
         'init': {
@@ -149,9 +149,9 @@ def parseSiteId(message):
 if __name__ == '__main__':
     mqtt_client.on_connect = onConnect
     mqtt_client.on_message = onMessage
-    mqttClient.message_callback_add("hermes/nlu/intentNotRecognized", onIntentNotRecognized)
-    mqttClient.message_callback_add('hermes/dialogueManager/sessionEnded', onSessionEnded)
-    mqttClient.message_callback_add('hermes/dialogueManager/sessionStarted', onSessionStarted)
+    mqtt_client.message_callback_add("hermes/nlu/intentNotRecognized", onIntentNotRecognized)
+    mqtt_client.message_callback_add('hermes/dialogueManager/sessionEnded', onSessionEnded)
+    mqtt_client.message_callback_add('hermes/dialogueManager/sessionStarted', onSessionStarted)
     mqtt_client.connect(HOST, PORT)
     print("Demo loaded")
     say("This is Jarvis. What do you want?")
