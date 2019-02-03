@@ -53,11 +53,11 @@ def scrape_google(search_term, number_results, language_code):
 
 
 if __name__ == '__main__':
-    keywords = ['edmund martin', 'python', 'google scraping']
+    keywords = ['edmund martin']
     data = []
     for keyword in keywords:
         try:
-            results = scrape_google(keyword, 100, "en")
+            results = scrape_google(keyword, 1, "en")
             for result in results:
                 data.append(result)
         except Exception as e:
