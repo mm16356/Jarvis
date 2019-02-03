@@ -44,12 +44,12 @@ def onConnect(client, userdata, flags, rc):
         mqtt_client.subscribe(topic)
         print("subscribed to a topic")
     print("got to on connect")
+    pin1.on()
+    pin2.on()
+    pin3.on()
 
 
 def onMessage(client, userdata, message):
-    pin1.on()
-    pin2.on()
-    pin3.off()
     print("got to on message")
     data = json.loads(message.payload)
     sessionId = data['sessionId']
@@ -80,6 +80,9 @@ def onMessage(client, userdata, message):
     
 
 def onSessionStarted(client, data, message):
+    pin1.on()
+    pin2.on()
+    pin3.off()
     print("got to onSessionStarted")
     sessionId = parseSessionId(message)
     sessions[sessionId] = message
@@ -183,8 +186,5 @@ if __name__ == '__main__':
     mqtt_client.message_callback_add('hermes/dialogueManager/sessionStarted', onSessionStarted)
     mqtt_client.connect(HOST, PORT)
     print("Demo loaded")
-    pin1.on()
-    pin2.on()
-    pin3.on()
     print("Sound played")
     mqtt_client.loop_forever()
