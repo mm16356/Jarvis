@@ -122,9 +122,7 @@ def endTalk(sessionId, text):
         'sessionId': sessionId,
         'text': text
     }))
-    pin1.on()
-    pin2.on()
-    pin3.on()
+
 
 
 def say(text):
@@ -137,6 +135,9 @@ def say(text):
             'text': text
         }
     }))
+    pin1.on()
+    pin2.on()
+    pin3.on()
 
 
 
