@@ -135,9 +135,7 @@ def say(text):
             'text': text
         }
     }))
-    pin1.on()
-    pin2.on()
-    pin3.on()
+
 
 
 
@@ -154,9 +152,7 @@ def ask(text, client='default', intentFilter=None, customData=''):
             'canBeEnqueued': True
         }
     }))
-    pin1.on()
-    pin2.on()
-    pin3.on()
+
 
 
 
