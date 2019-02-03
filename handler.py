@@ -9,6 +9,11 @@ import paho.mqtt.publish as mqttPublish
 
 import requests
 
+from gpiozero import LED
+from time import sleep
+
+led = LED(17)
+
 PRINT_DEBUG_TO_TERMINAL = True
 
 fromtimestamp = datetime.datetime.fromtimestamp
@@ -18,7 +23,9 @@ mqtt_client = mqtt.Client()
 HOST = "localhost"
 PORT = 1883
 
-CALCULATOR_TOPICS = ['hermes/intent/mm16356:ComputeSum']
+CALCULATOR_TOPICS = ['hermes/intent/mm16356:ComputeSum',
+'hermes/intent/mm16356:TurnOn',
+'hermes/intent/mm16356:TurnOff']
 
 # Subscribe to msg stream
 def onConnect(client, userdata, flags, rc):
@@ -42,7 +49,12 @@ def onMessage(client, userdata, msg):
     
     if msg.topic == 'hermes/intent/mm16356:ComputeSum':
         response = ("The sum is {0}.".format(sum["sum"]))
-        
+    if msg.topic == 'hermes/intent/mm16356:TurnOn':
+        led.on()
+        response = ("Machine is on")
+    if msg.topic == 'hermes/intent/mm16356:TurnOff':
+        led.off()
+        response = ("Machine is off")
     session_id = parse_session_id(msg)
     say(response)
 
