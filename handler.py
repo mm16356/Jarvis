@@ -17,7 +17,7 @@ fromtimestamp = datetime.datetime.fromtimestamp
 mqtt_client = mqtt.Client()
 HOST = "localhost"
 PORT = 1883
-mqtt_client.connect(HOST, PORT)
+
 CALCULATOR_TOPICS = ['hermes/intent/ComputeSum']
 
 # Subscribe to msg stream
@@ -85,4 +85,11 @@ if __name__ == '__main__':
     mqtt_client.on_message = on_message
     mqtt_client.connect(HOST, PORT)
     print("Demo loaded")
+		mqttClient.publish('hermes/dialogueManager/startSession', json.dumps({
+		'init': {
+			'type': 'notification',
+			'text': "this is a test"
+		}
+}))
+	mqtt_client.connect(HOST, PORT)
     mqtt_client.loop_forever()
