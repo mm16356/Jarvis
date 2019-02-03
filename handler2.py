@@ -58,12 +58,11 @@ def onMessage(client, userdata, message):
        # print(customData['userInput'])
         #query = "filetype:pdf datasheet " + customData['userInput']
         query = "datasheet bc546"
-        print("opening datasheet for bc546") 
-        #say("opening datasheet for b c 5 4 6")
+        say("opening datasheet for b c 5 4 6")
         for j in search(query, tld="co.uk", num=1, stop=1, pause=2): 
             print(j) 
             wb.open_new_tab(j)
-        sleep(5)
+        print("opening datasheet for bc546") 
 #    session_id = parse_session_id(message)
 #    say(response)
     
