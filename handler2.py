@@ -74,9 +74,9 @@ def onMessage(client, userdata, message):
         query = "datasheet bc546"
         #say("opening data sheet for b c 5 4 6")
 
-        for j in schh(query, tld="co.uk", num=1, stop=1, pause=1): 
+        for j in schh(query, tld="co.uk", num=2, stop=1, pause=2): 
             print(j) 
-        wb.open_new_tab("https://google.com")
+        wb.open_new_tab("https://www.sparkfun.com/datasheets/Components/BC546.pdf")
         print("opening datasheet for bc546") 
 #    session_id = parse_session_id(message)
 #    say(response)
