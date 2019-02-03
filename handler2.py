@@ -19,7 +19,9 @@ try:
 except ImportError: 
     print("No module named 'google' found") 
 
-led = LED(17)
+pin1 = LED(17)
+pin2 = LED(27)
+pin3 = LED(22)
 
 PRINT_DEBUG_TO_TERMINAL = True
 
@@ -45,10 +47,16 @@ def onConnect(client, userdata, flags, rc):
 
 
 def onMessage(client, userdata, message):
+    pin1.on()
+    pin2.on()
+    pin3.off()
     print("got to on message")
     data = json.loads(message.payload)
     sessionId = data['sessionId']
     if message.topic == INTENT_SEARCH_DATASHEET:
+        pin1.on()
+        pin2.off()
+        pin3.on()
         print("got to on message.topic datahseet")
         ask(text='For which component?', customData=json.dumps({
         'wasIntent': INTENT_SEARCH_DATASHEET
@@ -58,7 +66,8 @@ def onMessage(client, userdata, message):
        # print(customData['userInput'])
         #query = "filetype:pdf datasheet " + customData['userInput']
         query = "datasheet bc546"
-        say("opening datasheet for b c 5 4 6")
+        say("opening data sheet for b c 5 4 6")
+
         for j in schh(query, tld="co.uk", num=1, stop=1, pause=1): 
             print(j) 
             wb.open_new_tab(j)
@@ -116,6 +125,9 @@ def say(text):
             'text': text
         }
     }))
+    pin1.on()
+    pin2.off()
+    pin3.off()
 
 
 def ask(text, client='default', intentFilter=None, customData=''):
@@ -127,7 +139,11 @@ def ask(text, client='default', intentFilter=None, customData=''):
             'text': text,
             'canBeEnqueued': True
         }
-}))
+    }))
+    pin1.on()
+    pin2.off()
+    pin3.off()
+
 
 def parseSessionId(message):
     data = json.loads(message.payload)
@@ -159,6 +175,8 @@ if __name__ == '__main__':
     mqtt_client.message_callback_add('hermes/dialogueManager/sessionStarted', onSessionStarted)
     mqtt_client.connect(HOST, PORT)
     print("Demo loaded")
-    say("System OK")
+    pin1.on()
+    pin2.on()
+    pin3.on()
     print("Sound played")
     mqtt_client.loop_forever()
