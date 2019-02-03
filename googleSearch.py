@@ -6,8 +6,8 @@ except ImportError:
 	print("No module named 'google' found") 
 
 # to search 
-query = "filetype:pdf"+ "bc547"
+query = "filetype:pdf" + "bc547"
 
 url =search(query, tld="co.in", num=1, stop=1, pause=2)
-
-wb.open_new_tab(url)
+print(url)
+#wb.open_new_tab(url)
