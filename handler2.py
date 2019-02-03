@@ -51,20 +51,23 @@ def onConnect(client, userdata, flags, rc):
 
 def onMessage(client, userdata, message):
     print("got to on message")
+    pin1.on()
+    pin2.on()
+    pin3.off()
     data = json.loads(message.payload)
     sessionId = data['sessionId']
     if message.topic == INTENT_SEARCH_DATASHEET:
-        pin1.on()
-        pin2.off()
-        pin3.on()
+        #pin1.on()
+        #pin2.off()
+        #pin3.on()
         print("got to on message.topic datahseet")
         ask(text='For which component?', customData=json.dumps({
         'wasIntent': INTENT_SEARCH_DATASHEET
         }))
     elif message.topic == INTENT_COMPONENT:
-        pin1.on()
-        pin2.off()
-        pin3.on()
+        #pin1.on()
+        #pin2.off()
+        #pin3.on()
         #customData = parseCustomData(message)
        # print(customData['userInput'])
         #query = "filetype:pdf datasheet " + customData['userInput']
@@ -80,9 +83,6 @@ def onMessage(client, userdata, message):
     
 
 def onSessionStarted(client, data, message):
-    pin1.on()
-    pin2.on()
-    pin3.off()
     print("got to onSessionStarted")
     sessionId = parseSessionId(message)
     sessions[sessionId] = message
@@ -190,5 +190,4 @@ if __name__ == '__main__':
     mqtt_client.message_callback_add('hermes/dialogueManager/sessionStarted', onSessionStarted)
     mqtt_client.connect(HOST, PORT)
     print("Demo loaded")
-    print("Sound played")
     mqtt_client.loop_forever()
