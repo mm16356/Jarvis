@@ -62,6 +62,9 @@ def onMessage(client, userdata, message):
         'wasIntent': INTENT_SEARCH_DATASHEET
         }))
     elif message.topic == INTENT_COMPONENT:
+        pin1.on()
+        pin2.off()
+        pin3.on()
         #customData = parseCustomData(message)
        # print(customData['userInput'])
         #query = "filetype:pdf datasheet " + customData['userInput']
@@ -116,21 +119,28 @@ def endTalk(sessionId, text):
         'sessionId': sessionId,
         'text': text
     }))
+    pin1.on()
+    pin2.on()
+    pin3.on()
 
 
 def say(text):
+    pin1.on()
+    pin2.off()
+    pin3.off()
     mqtt_client.publish('hermes/dialogueManager/startSession', json.dumps({
         'init': {
             'type': 'notification',
             'text': text
         }
     }))
-    pin1.on()
-    pin2.off()
-    pin3.off()
+
 
 
 def ask(text, client='default', intentFilter=None, customData=''):
+    pin1.on()
+    pin2.off()
+    pin3.off()
     mqtt_client.publish('hermes/dialogueManager/startSession', json.dumps({
         'siteId': client,
         'customData': customData,
@@ -140,9 +150,7 @@ def ask(text, client='default', intentFilter=None, customData=''):
             'canBeEnqueued': True
         }
     }))
-    pin1.on()
-    pin2.off()
-    pin3.off()
+
 
 
 def parseSessionId(message):
@@ -175,8 +183,8 @@ if __name__ == '__main__':
     mqtt_client.message_callback_add('hermes/dialogueManager/sessionStarted', onSessionStarted)
     mqtt_client.connect(HOST, PORT)
     print("Demo loaded")
-    #pin1.on()
-    #pin2.on()
-    #pin3.on()
+    pin1.on()
+    pin2.on()
+    pin3.on()
     print("Sound played")
     mqtt_client.loop_forever()
