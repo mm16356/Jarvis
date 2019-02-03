@@ -57,9 +57,9 @@ def onMessage(client, userdata, message):
         #customData = parseCustomData(message)
        # print(customData['userInput'])
         #query = "filetype:pdf datasheet " + customData['userInput']
-        query = "filetype:pdf datasheet bc546"
+        query = "datasheet bc546"
         print("opening datasheet for bc546") 
-        say("opening datasheet for bc546")
+        #say("opening datasheet for b c 5 4 6")
         for j in search(query, tld="co.uk", num=1, stop=1, pause=2): 
             print(j) 
             wb.open_new_tab(j)
