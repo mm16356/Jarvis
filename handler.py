@@ -28,8 +28,8 @@ def on_connect(client, userdata, flags, rc):
 
 
 def on_message(client, userdata, msg):
-    print("got to on connect")
-    print(msg.topic)
+    print("got to on message")
+
     
     if msg.topic not in CALCULATOR_TOPICS:
         return
@@ -43,7 +43,7 @@ def on_message(client, userdata, msg):
         response = ("The sum is {0}.".format(sum["sum"]))
         
     session_id = parse_session_id(msg)
-    say(session_id, response)
+    say(response)
 
 
 def addTwo(slots):
