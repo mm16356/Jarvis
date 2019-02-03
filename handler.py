@@ -53,7 +53,7 @@ def addTwo(slots):
     '''
     number1 = slots.get("FirstTerm", None)
     number2 = slots.get("SecondTerm", None)
-    sum = number1 + number2
+    sum = int(number1 + number2)
     return {"sum": sum}
 
 
