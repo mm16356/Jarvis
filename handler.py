@@ -5,6 +5,8 @@ import datetime
 import json
 
 import paho.mqtt.client as mqtt
+import paho.mqtt.publish as mqttPublish
+
 import requests
 
 PRINT_DEBUG_TO_TERMINAL = True
