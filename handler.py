@@ -17,7 +17,7 @@ fromtimestamp = datetime.datetime.fromtimestamp
 mqtt_client = mqtt.Client()
 HOST = "localhost"
 PORT = 1883
-mqttClient.connect(HOST, PORT)
+mqtt_client.connect(HOST, PORT)
 CALCULATOR_TOPICS = ['hermes/intent/ComputeSum']
 
 # Subscribe to msg stream
