@@ -72,7 +72,7 @@ def onMessage(client, userdata, message):
        # print(customData['userInput'])
         #query = "filetype:pdf datasheet " + customData['userInput']
         query = "datasheet bc546"
-        say("opening data sheet for b c 5 4 6")
+        #say("opening data sheet for b c 5 4 6")
 
         for j in schh(query, tld="co.uk", num=1, stop=1, pause=1): 
             print(j) 
