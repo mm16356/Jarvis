@@ -41,7 +41,7 @@ def onMessage(client, userdata, msg):
     #say(session_id, "Hello")
     
     if msg.topic == 'hermes/intent/mm16356:ComputeSum':
-        response = ("The sum is {0}.".format(sum["sum"]))
+        response = ("The sum of the two numbers is {0}. Youre welcome. Jarvis out.".format(sum["sum"]))
         
     session_id = parse_session_id(msg)
     say(response)
@@ -78,7 +78,7 @@ def parse_slots(msg):
     We extract the slots as a dict
     '''
     data = json.loads(msg.payload)
-    return {slot['slotName']: slot['rawValue'] for slot in data['slots']}    
+    return {slot['slotName']: slot['value'] for slot in data['slots']}    
     
     
 def say(text):
