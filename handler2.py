@@ -63,6 +63,7 @@ def onMessage(client, userdata, message):
         for j in search(query, tld="co.uk", num=1, stop=1, pause=2): 
             print(j) 
             wb.open_new_tab(j)
+        sleep(5)
 #    session_id = parse_session_id(message)
 #    say(response)
     
