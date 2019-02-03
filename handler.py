@@ -89,7 +89,7 @@ if __name__ == '__main__':
     mqtt_client.on_message = on_message
     mqtt_client.connect(HOST, PORT)
     print("Demo loaded")
-	say("This is Jarvis. What do you want?")
+    say("This is Jarvis. What do you want?")
     print("Sound played")
     mqtt_client.connect(HOST, PORT)
     mqtt_client.loop_forever()
