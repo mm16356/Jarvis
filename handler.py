@@ -21,13 +21,14 @@ PORT = 1883
 CALCULATOR_TOPICS = ['hermes/intent/ComputeSum']
 
 # Subscribe to msg stream
-def on_connect(client, userdata, flags, rc):
+def onConnect(client, userdata, flags, rc):
     for topic in CALCULATOR_TOPICS:
         mqtt_client.subscribe(topic)
+        print("subscribed to a topic")
     print("got to on connect")
 
 
-def on_message(client, userdata, msg):
+def onMessage(client, userdata, msg):
     print("got to on message")
 
     
@@ -85,8 +86,8 @@ def say(text):
     
 
 if __name__ == '__main__':
-    mqtt_client.on_connect = on_connect
-    mqtt_client.on_message = on_message
+    mqtt_client.on_connect = onConnect
+    mqtt_client.on_message = onMessage
     mqtt_client.connect(HOST, PORT)
     print("Demo loaded")
     say("This is Jarvis. What do you want?")
