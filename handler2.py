@@ -76,7 +76,7 @@ def onMessage(client, userdata, message):
 
         for j in schh(query, tld="co.uk", num=1, stop=1, pause=1): 
             print(j) 
-        wb.open_new_tab("google.com")
+        wb.open_new_tab("https://google.com")
         print("opening datasheet for bc546") 
 #    session_id = parse_session_id(message)
 #    say(response)
