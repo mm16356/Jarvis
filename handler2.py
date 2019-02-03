@@ -93,9 +93,7 @@ def onSessionEnded(client, data, message):
     sessionId = parseSessionId(message)
     if sessionId in sessions:
         del sessions[sessionId]
-    pin1.on()
-    pin2.off()
-    pin3.on()
+
 
 def onIntentNotRecognized(client, data, message):
     print("got to onIntentNotRecognized")
@@ -138,6 +136,9 @@ def say(text):
             'text': text
         }
     }))
+    pin1.on()
+    pin2.on()
+    pin3.on()
 
 
 
