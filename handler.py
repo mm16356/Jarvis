@@ -40,12 +40,12 @@ def onMessage(client, userdata, msg):
     if msg.topic not in CALCULATOR_TOPICS:
         return
         
-    slots = parse_slots(msg)
-    sum = addTwo(slots)
     
     #say(session_id, "Hello")
     
     if msg.topic == 'hermes/intent/mm16356:ComputeSum':
+        slots = parse_slots(msg)
+        sum = addTwo(slots)
         response = ("The sum is {0}.".format(sum["sum"]))
     if msg.topic == 'hermes/intent/mm16356:TurnOn':
         led.on()
