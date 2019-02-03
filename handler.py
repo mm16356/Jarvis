@@ -80,12 +80,16 @@ def parse_slots(msg):
     return {slot['slotName']: slot['rawValue'] for slot in data['slots']}    
     
     
+def say(text):
+    mqtt_client.publish('hermes/dialogueManager/startSession', json.dumps({'init': {'type': 'notification','text': text}}))
+    
+
 if __name__ == '__main__':
     mqtt_client.on_connect = on_connect
     mqtt_client.on_message = on_message
     mqtt_client.connect(HOST, PORT)
     print("Demo loaded")
-    mqtt_client.publish('hermes/dialogueManager/startSession', json.dumps({'init': {'type': 'notification','text': "this is a test"}}))
+	say("This is Jarvis. What do you want?")
     print("Sound played")
     mqtt_client.connect(HOST, PORT)
     mqtt_client.loop_forever()
